@@ -14,7 +14,7 @@
     } else {
         global.Shake = factory(global, global.document);
     }
-} (typeof window !== 'undefined' ? window : this, function (window, document) {
+}(typeof window !== 'undefined' ? window : this, function(window, document) {
 
     'use strict';
 
@@ -58,7 +58,7 @@
     }
 
     //reset timer values
-    Shake.prototype.reset = function () {
+    Shake.prototype.reset = function() {
         this.lastTime = new Date();
         this.lastX = null;
         this.lastY = null;
@@ -66,7 +66,7 @@
     };
 
     //start listening for devicemotion
-    Shake.prototype.start = function () {
+    Shake.prototype.start = function() {
         this.reset();
         if (this.hasDeviceMotion) {
             window.addEventListener('devicemotion', this, false);
@@ -77,7 +77,7 @@
                 if (permissionState === 'granted') {
                     window.addEventListener('devicemotion', this, false);
                 } else {
-                    alert('deny permiss,try again!');
+                    alert('deny permiss,reboot your app and try again!');
                 }
             }).catch(e => {
                 DeviceMotionEvent.requestPermission()
@@ -86,7 +86,7 @@
     };
 
     //stop listening for devicemotion
-    Shake.prototype.stop = function () {
+    Shake.prototype.stop = function() {
         if (this.hasDeviceMotion) {
             window.removeEventListener('devicemotion', this, false);
         }
@@ -94,7 +94,7 @@
     };
 
     //calculates if shake did occur
-    Shake.prototype.devicemotion = function (e) {
+    Shake.prototype.devicemotion = function(e) {
         var current = e.accelerationIncludingGravity;
         var currentTime;
         var timeDifference;
@@ -131,8 +131,8 @@
     };
 
     //event handler
-    Shake.prototype.handleEvent = function (e) {
-        if (typeof (this[e.type]) === 'function') {
+    Shake.prototype.handleEvent = function(e) {
+        if (typeof(this[e.type]) === 'function') {
             return this[e.type](e);
         }
     };
